@@ -1,10 +1,14 @@
 package ar.edu.utn.frba.dds;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import ar.edu.utn.frba.dds.interfaces.Categoria;
+import ar.edu.utn.frba.dds.enums.Categoria;
+import ar.edu.utn.frba.dds.enums.Material;
+import ar.edu.utn.frba.dds.models.TipoDePrenda;
 import ar.edu.utn.frba.dds.models.Prenda;
+import java.awt.*;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
@@ -13,46 +17,51 @@ public class PrendaTest {
   // Como usuarie de QueMePongo, quiero especificar que tipo de prenda estoy cargando.
   @Test
   public void testTipoDePrenda() {
-     Prenda prenda = new Prenda("Remera", Categoria.Parte_Superior, "Algodon", "Blanco", Optional.empty());
-     assertEquals("Remera", prenda.getTipoDePrenda());
+    Prenda prenda = new Prenda(TipoDePrenda.REMERA, Material.ALGODON, new Color(15, 2, 5), Optional.empty());
+    assertEquals(TipoDePrenda.REMERA, prenda.getTipoDePrenda());
   }
 
-  // Como usuarie de QueMePongo, quiero identificar a que categoria pertenece una prenda
+  // Como usuarie de QueMePongo, quiero identificar a que categoria pertenece una prenda.
   @Test
-  public void testCategoriaDeUnaPrenda() {
-    Prenda prenda = new Prenda("Remera", Categoria.Parte_Superior, "Algodon", "Blanco", Optional.empty());
-    assertEquals(Categoria.Parte_Superior, prenda.getCategoria());
+  public void testUnaPrendaRemeraEsDeCategoriaParteSuperior() {
+    Prenda prenda = new Prenda(TipoDePrenda.REMERA, Material.ALGODON, new Color(15, 2, 5), Optional.empty());
+    assertEquals(Categoria.PARTE_SUPERIOR, prenda.getCategoria());
   }
 
-  // Como usuarie de QueMePongo, quiero saber de que material o tela esta hecha una prenda
+  // Como usuarie de QueMePongo, quiero poder indicar de que tela o material es una prenda.
   @Test
-  public void testMaterialDeUnaPrenda() {
-    Prenda prenda = new Prenda("Remera", Categoria.Parte_Superior, "Algodon", "Blanco", Optional.empty());
-    assertEquals("Algodon", prenda.getMaterial());
+  public void testMaterialDePrenda() {
+    Prenda prenda = new Prenda(TipoDePrenda.REMERA, Material.ALGODON, new Color(15, 2, 5), Optional.empty());
+    assertEquals(Material.ALGODON, prenda.getMaterial());
   }
 
-  // Como usuarie de QueMePongo, quiero poder indicar un color principal para mis prendas
+  // Como usuarie de QueMePongo, quiero poder indiccar un color principal para una prenda.
   @Test
-  public void testColorPrincipalDeUnaPrenda() {
-    Prenda prenda = new Prenda("Remera", Categoria.Parte_Superior, "Algodon", "Blanco", Optional.empty());
-    assertEquals("Blanco", prenda.getColorPrincipal());
+  public void testColorPrincipalDePrenda() {
+    Prenda prenda = new Prenda(TipoDePrenda.REMERA, Material.ALGODON, new Color(15, 2, 5), Optional.empty());
+    assertEquals(new Color(15, 2, 5), prenda.getColorPrincipal());
   }
 
-  // Como usuarie de QueMePongo, quiero poder indicar un color secundario (si existe) para mis prendas
+  // Como usuarie de QueMePongo, quiero poder indicar, si existe, un color secundario para una prenda.
   @Test
-  public void testColorSecundarioDeUnaPrenda(){
-    Prenda prenda = new Prenda("Remera", Categoria.Parte_Superior, "Algodon", "Blanco", Optional.of("Rojo"));
-    assertEquals("Rojo", prenda.getColorSecundario().get());
+  public void testColorSecundarioDePrenda() {
+    Prenda prenda = new Prenda(TipoDePrenda.REMERA, Material.ALGODON, new Color(15, 2, 5), Optional.of(new Color(15, 2, 5)));
+    assertEquals(Optional.of(new Color(15, 2, 5)), prenda.getColorSecundario());
   }
 
-  // Como usuarie de QueMePongo, quiero evitar que haya prendas sin tipo, tela, categoria o color primario
+  // Como usuarie de QueMePongo, quiero evitar que haya prendas sin tipo, material, categoria o color principal.
   @Test
   public void testPrendaSinTipo() {
-    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-      Prenda prenda = new Prenda(null, Categoria.Parte_Superior, "Algodon", "Blanco", Optional.empty());
-    });
-    assertEquals("El tipo de prenda no puede ser nulo", exception.getMessage());
+    assertThrows(NullPointerException.class, () -> new Prenda(null, Material.ALGODON, new Color(15, 2, 5), Optional.empty()));
   }
+
+  // Como usuarie de QueMePongo, quiero evitar que haya prendas cuya categoria no se condiga con su tipo (Ej: Una remera no puede ser de categoria calzado)
+  @Test
+  public void testPrendaConCategoriaIncorrecta() {
+    Prenda prenda = new Prenda(TipoDePrenda.REMERA, Material.ALGODON, new Color(15, 2, 5), Optional.empty());
+    assertNotEquals(Categoria.CALZADO, prenda.getCategoria());
+  }
+
 
 
 

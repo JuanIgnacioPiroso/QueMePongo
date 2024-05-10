@@ -1,70 +1,44 @@
 package ar.edu.utn.frba.dds.models;
 
-import ar.edu.utn.frba.dds.interfaces.Categoria;
+import static java.util.Objects.requireNonNull;
+
+import ar.edu.utn.frba.dds.enums.Categoria;
+import ar.edu.utn.frba.dds.enums.Material;
+import java.awt.*;
 import java.util.Optional;
 
 public class Prenda {
 
 
-  private String tipoDePrenda;
-  private Categoria categoria;
-  private String material;
-  private String colorPrincipal;
-  private Optional<String> colorSecundario;
+  private TipoDePrenda tipoDePrenda;
+  private Material material;
+  private Color colorPrincipal;
+  private Optional<Color> colorSecundario;
 
-
-  public Prenda(String tipoDePrenda, Categoria categoria, String material, String colorPrincipal, Optional<String> colorSecundario) {
-    this.tipoDePrenda = validateNotNull(tipoDePrenda, "El tipo de prenda no puede ser nulo");
-    this.categoria = validateNotNull(categoria, "La categoría no puede ser nula");
-    this.material = validateNotNull(material, "El material no puede ser nulo");
-    this.colorPrincipal = validateNotNull(colorPrincipal, "El color principal no puede ser nulo");
+  public Prenda(TipoDePrenda tipoDePrenda, Material material, Color colorPrincipal, Optional<Color> colorSecundario) {
+    this.tipoDePrenda = requireNonNull(tipoDePrenda, "Debe especificar un tipo de prenda");
+    this.material = requireNonNull(material, "Debe especificar un material");
+    this.colorPrincipal = requireNonNull(colorPrincipal, "Debe especificar un color principal");
     this.colorSecundario = colorSecundario;
   }
 
-  private static <T> T validateNotNull(T value, String errorMessage) {
-    if (value == null) {
-      throw new IllegalArgumentException(errorMessage);
-    }
-    return value;
-  }
-
-  public String getTipoDePrenda() {
+  public TipoDePrenda getTipoDePrenda() {
     return tipoDePrenda;
   }
 
-  public void setTipoDePrenda(String tipoDePrenda) {
-    this.tipoDePrenda = tipoDePrenda;
-  }
-
   public Categoria getCategoria() {
-    return categoria;
+    return tipoDePrenda.getCategoria();
   }
 
-  public void setCategoria(Categoria categoria) {
-    this.categoria = categoria;
-  }
-
-  public String getMaterial() {
+  public Material getMaterial() {
     return material;
   }
 
-  public void setMaterial(String material) {
-    this.material = material;
-  }
-
-  public String getColorPrincipal() {
+  public Color getColorPrincipal() {
     return colorPrincipal;
   }
 
-  public void setColorPrincipal(String colorPrincipal) {
-    this.colorPrincipal = colorPrincipal;
-  }
-
-  public Optional<String> getColorSecundario() {
+  public Optional<Color> getColorSecundario() {
     return colorSecundario;
-  }
-
-  public void setColorSecundario(Optional<String> colorSecundario) {
-    this.colorSecundario = colorSecundario;
   }
 }
