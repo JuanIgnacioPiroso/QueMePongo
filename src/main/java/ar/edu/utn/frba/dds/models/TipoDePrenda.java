@@ -2,7 +2,7 @@ package ar.edu.utn.frba.dds.models;
 
 import ar.edu.utn.frba.dds.enums.Categoria;
 
-public class TipoDePrenda{
+public class TipoDePrenda {
 
   Categoria categoria;
 
@@ -13,18 +13,13 @@ public class TipoDePrenda{
   public static final TipoDePrenda BLUSA = new TipoDePrenda(Categoria.PARTE_SUPERIOR);
   public static final TipoDePrenda ZAPATOS = new TipoDePrenda(Categoria.CALZADO);
 
-  public TipoDePrenda(Categoria categoria){
+  public TipoDePrenda(Categoria categoria) {
     this.categoria = categoria;
   }
 
-  public Categoria getCategoria(){
+  public Categoria getCategoria() {
     return this.categoria;
   }
-
-
-
-
-
 
 
 }
