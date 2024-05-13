@@ -1,5 +1,6 @@
 package ar.edu.utn.frba.dds.enums;
 
+/* Primera Iteracion */
 public enum Material {
   TELA,
   CUERO,
@@ -8,3 +9,4 @@ public enum Material {
   POLIESTER,
   ALGODON,
 }
+
