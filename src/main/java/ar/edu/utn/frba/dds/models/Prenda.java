@@ -3,6 +3,7 @@ package ar.edu.utn.frba.dds.models;
 import static java.util.Objects.requireNonNull;
 
 import ar.edu.utn.frba.dds.enums.Categoria;
+import ar.edu.utn.frba.dds.enums.Formalidad;
 import ar.edu.utn.frba.dds.enums.Material;
 import ar.edu.utn.frba.dds.enums.Trama;
 import java.awt.Color;
@@ -15,6 +16,7 @@ public class Prenda {
   private Trama trama;
   private Color colorPrincipal;
   private Optional<Color> colorSecundario;
+  private Formalidad formalidad;
 
   public Prenda(TipoDePrenda tipoDePrenda, Material material, Trama trama, Color colorPrincipal, Optional<Color> colorSecundario) {
     this.tipoDePrenda = tipoDePrenda;
@@ -42,6 +44,14 @@ public class Prenda {
 
   public Optional<Color> getColorSecundario() {
     return colorSecundario;
+  }
+
+  public Trama getTrama() {
+    return trama;
+  }
+
+  public Formalidad getFormalidad() {
+    return formalidad;
   }
 }
 
