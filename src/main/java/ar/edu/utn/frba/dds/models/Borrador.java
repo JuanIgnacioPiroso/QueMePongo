@@ -2,6 +2,7 @@ package ar.edu.utn.frba.dds.models;
 
 import static java.util.Objects.requireNonNull;
 
+import ar.edu.utn.frba.dds.enums.Formalidad;
 import ar.edu.utn.frba.dds.enums.Material;
 import ar.edu.utn.frba.dds.enums.Trama;
 import java.awt.*;
@@ -40,7 +41,7 @@ public class Borrador {
   }
 
   public Prenda crearPrenda() {
-    return new Prenda(tipoDePrenda, material, trama, colorPrincipal, colorSecundario);
+    return new Prenda(tipoDePrenda, material, trama, colorPrincipal, colorSecundario, Formalidad.FORMAL,20);
   }
 
 
