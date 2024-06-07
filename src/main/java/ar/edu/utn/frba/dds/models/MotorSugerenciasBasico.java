@@ -1,9 +1,9 @@
 package ar.edu.utn.frba.dds.models;
 import ar.edu.utn.frba.dds.enums.Categoria;
-import ar.edu.utn.frba.dds.interfaces.MotorSugerencias;
+import ar.edu.utn.frba.dds.interfaces.IMotorSugerencias;
 import java.util.List;
 
-public class MotorSugerenciasBasico implements MotorSugerencias{
+public class MotorSugerenciasBasico implements IMotorSugerencias {
 
 
   @Override
