@@ -7,6 +7,7 @@ public class Usuario {
   List<Prenda> prendas;
   Integer edad;
   IMotorSugerencias motorSugerencias;
+  List<Guardarropa> guardarropas;
 
   public Usuario(List<Prenda> prendas, Integer edad, IMotorSugerencias motorSugerencias) {
     this.prendas = prendas;
@@ -28,5 +29,13 @@ public class Usuario {
 
   public IMotorSugerencias getMotorSugerencias() {
     return motorSugerencias;
+  }
+
+  public void agregarGuardarropa(Guardarropa guardarropa) {
+    guardarropas.add(guardarropa);
+  }
+
+  public void quitarGuardarropa(Guardarropa guardarropa) {
+    guardarropas.remove(guardarropa);
   }
 }
