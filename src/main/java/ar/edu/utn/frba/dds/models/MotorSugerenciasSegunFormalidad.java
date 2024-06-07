@@ -2,11 +2,11 @@ package ar.edu.utn.frba.dds.models;
 
 import ar.edu.utn.frba.dds.enums.Formalidad;
 import ar.edu.utn.frba.dds.enums.Categoria;
-import ar.edu.utn.frba.dds.interfaces.MotorSugerencias;
+import ar.edu.utn.frba.dds.interfaces.IMotorSugerencias;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MotorSugerenciasSegunFormalidad implements MotorSugerencias {
+public class MotorSugerenciasSegunFormalidad implements IMotorSugerencias {
 
 
   List<Prenda> getPrendasValidas(Usuario usuario) {

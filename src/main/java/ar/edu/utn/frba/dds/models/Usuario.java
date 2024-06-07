@@ -1,14 +1,15 @@
 package ar.edu.utn.frba.dds.models;
 
-import ar.edu.utn.frba.dds.interfaces.MotorSugerencias;
+import ar.edu.utn.frba.dds.interfaces.IMotorSugerencias;
 import java.util.List;
 
 public class Usuario {
   List<Prenda> prendas;
   Integer edad;
-  MotorSugerencias motorSugerencias;
+  IMotorSugerencias motorSugerencias;
+  List<Guardarropa> guardarropas;
 
-  public Usuario(List<Prenda> prendas, Integer edad, MotorSugerencias motorSugerencias) {
+  public Usuario(List<Prenda> prendas, Integer edad, IMotorSugerencias motorSugerencias) {
     this.prendas = prendas;
     this.edad = edad;
     this.motorSugerencias = motorSugerencias;
@@ -26,7 +27,15 @@ public class Usuario {
     return edad;
   }
 
-  public MotorSugerencias getMotorSugerencias() {
+  public IMotorSugerencias getMotorSugerencias() {
     return motorSugerencias;
+  }
+
+  public void agregarGuardarropa(Guardarropa guardarropa) {
+    guardarropas.add(guardarropa);
+  }
+
+  public void quitarGuardarropa(Guardarropa guardarropa) {
+    guardarropas.remove(guardarropa);
   }
 }

@@ -1,7 +1,7 @@
 package ar.edu.utn.frba.dds.models;
 
 import ar.edu.utn.frba.dds.enums.Humedad;
-import ar.edu.utn.frba.dds.interfaces.AccuWeatherAPI;
+import ar.edu.utn.frba.dds.interfaces.IAccuWeatherAPI;
 import ar.edu.utn.frba.dds.interfaces.IServicioMeteorologico;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -9,12 +9,12 @@ import java.util.Map;
 
 public class ServicioMeteorologicoAccuWeather implements IServicioMeteorologico {
   private Map<String, RespuestaAccuWeather> ultimasRespuestas;
-  AccuWeatherAPI api;
+  IAccuWeatherAPI api;
   Duration periodoDeValidez;
 
 
 
-  public ServicioMeteorologicoAccuWeather(Map<String, RespuestaAccuWeather> ultimasRespuestas, AccuWeatherAPI api, Duration periodoDeValidez) {
+  public ServicioMeteorologicoAccuWeather(Map<String, RespuestaAccuWeather> ultimasRespuestas, IAccuWeatherAPI api, Duration periodoDeValidez) {
     this.ultimasRespuestas = ultimasRespuestas;
     this.api = api;
     this.periodoDeValidez = periodoDeValidez;
